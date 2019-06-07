@@ -6,4 +6,8 @@ router.get("/", (ctx) => {
     ctx.body = "Hello World";
 });
 
+router.post("/", (ctx) => {
+    ctx.body = ctx.request.body;
+});
+
 export default router;

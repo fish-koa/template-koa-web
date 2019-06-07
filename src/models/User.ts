@@ -1,15 +1,14 @@
 import mongoose from "./mongoose";
 
-const Schema = mongoose.Schema;
-
-// 创建一个文档约束
-export const UserSchema = new Schema({
+export const UserSchema = new mongoose.Schema({
     name: String,
     age: Number,
-    sons: {
-        type: String,
-        default: "female",
-    },
 });
 
-export const UserModel = mongoose.model("User", UserSchema);
+export interface IUser extends mongoose.Document {
+    name: string;
+    age: number;
+}
+
+const UserModel = mongoose.model<IUser>("User", UserSchema);
+export default UserModel;
